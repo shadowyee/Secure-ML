@@ -27,10 +27,12 @@ public:
         this->w_d.resize(d);
 
         this->setup = new SetupPhase(n, d, t, io);
+
         setup->generateMTs();
+        
         std::cout << "Setup done" << std::endl;
         SetupTriples triples;
-        setup->getMTs(&triples);
+        setup->getMTs(&triples); 
 
         RowMatrixXi64 Xi(X.rows(), X.cols());
         ColVectorXi64 Yi(Y.rows(), Y.cols());
@@ -50,11 +52,16 @@ public:
             recv<RowMatrixXi64>(io, Xi);
             recv<ColVectorXi64>(io, Yi);
         }
+        
+        std::cout << "Offline Phase Communication Cost: " << io->counter << "B" << endl;
+        uint64_t scount = io->counter;
 
         this->online = new OnlinePhase(params, io, &triples);
         online->initialize(Xi, Yi);
 
         train_model();
+              
+        std::cout << "Online Phase Communication Cost: " << io->counter - scount << "B" << endl;
     }
 
     void train_model();
