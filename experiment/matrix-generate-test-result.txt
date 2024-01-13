@@ -1,0 +1,60 @@
+Starting test at Fri Jan 12 16:36:03 CST 2024
+========================
+n=32, d=32, t=32, |B|=32
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 8.7e-06 seconds.
+Matrix Bi generated time measured: 8.9e-06 seconds.
+Matrix Bi_ generated time measured: 9.4e-06 seconds.
+Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 0.362384 seconds.
+Matrix Ci_ generated time measured: 0.332696 seconds.
+Matrix Generate done
+==========end============
+Starting test at Fri Jan 12 16:36:07 CST 2024
+========================
+n=64, d=64, t=64, |B|=64
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 4e-05 seconds.
+Matrix Bi generated time measured: 3.83e-05 seconds.
+Matrix Bi_ generated time measured: 3.73e-05 seconds.
+Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 2.04716 seconds.
+Matrix Ci_ generated time measured: 1.99752 seconds.
+Matrix Generate done
+==========end============
+Starting test at Fri Jan 12 16:36:14 CST 2024
+========================
+n=128, d=128, t=128, |B|=128
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 0.0001437 seconds.
+Matrix Bi generated time measured: 0.0001484 seconds.
+Matrix Bi_ generated time measured: 0.000172 seconds.
+Matrices Initialized
+==========end============
+Starting test at Fri Jan 12 16:36:34 CST 2024
+========================
+n=256, d=256, t=256, |B|=256
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 0.0008231 seconds.
+Matrix Bi generated time measured: 0.000854 seconds.
+Matrix Bi_ generated time measured: 0.0008627 seconds.
+Matrices Initialized
+==========end============
