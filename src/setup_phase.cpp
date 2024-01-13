@@ -6,29 +6,66 @@ using namespace emp;
 using namespace std;
 
 void SetupPhase::initialize_matrices(){
+    auto startAi = std::chrono::high_resolution_clock::now();
     prg.random_data(Ai.data(), n * d * 8);
+    auto endAi = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsedAi = endAi - startAi;
+    std::cout << "Matrix Ai generated time measured: " << elapsedAi.count() << " seconds." << std::endl;
+    
+    auto startBi = std::chrono::high_resolution_clock::now();
     prg.random_data(Bi.data(), d * t * 8);
+    auto endBi = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsedBi = endBi - startBi;
+    std::cout << "Matrix Bi generated time measured: " << elapsedBi.count() << " seconds." << std::endl;
+    
+    auto startBi_ = std::chrono::high_resolution_clock::now();
     prg.random_data(Bi_.data(), BATCH_SIZE * t * 8);
+    auto endBi_ = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsedBi_ = endBi_ - startBi_;
+    std::cout << "Matrix Bi_ generated time measured: " << elapsedBi_.count() << " seconds." << std::endl;
 }
 
-void SetupPhase::generateMTs(){
+void SetupPhase::generateMTs(){             
     vector<vector<uint64_t>> ci(t, vector<uint64_t>(BATCH_SIZE));
     vector<vector<uint64_t>> ci_(t, vector<uint64_t>(d));
+    std::chrono::duration<double> elapsedai = {};
+    std::chrono::duration<double> elapsedai_t = {};
+    std::chrono::duration<double> elapsedCi = {};
+    std::chrono::duration<double> elapsedCi_ = {};
     for(int i = 0; i < t; i++){
+        auto startai = std::chrono::high_resolution_clock::now();
         RowMatrixXi64 Ai_b = Ai.block(i * BATCH_SIZE, 0, BATCH_SIZE, d);
         vector<vector<uint64_t>> ai(BATCH_SIZE, vector<uint64_t>(d));
         RowMatrixXi64_to_vector2d(Ai_b, ai);
+        auto endai = std::chrono::high_resolution_clock::now();
+        elapsedai += endai - startai;
+
+        auto startai_t = std::chrono::high_resolution_clock::now();
         RowMatrixXi64 Ai_bt = Ai_b.transpose();
         vector<vector<uint64_t>> ai_t(d, vector<uint64_t>(BATCH_SIZE));
         RowMatrixXi64_to_vector2d(Ai_bt, ai_t);
+        auto endai_t = std::chrono::high_resolution_clock::now();
+        elapsedai_t += endai_t - startai_t;
+
+        auto startCi = std::chrono::high_resolution_clock::now();
         vector<uint64_t> bi = ColVectorXi64_to_vector(Bi.col(i));
-        vector<uint64_t> bi_ = ColVectorXi64_to_vector(Bi_.col(i));
         secure_mult(BATCH_SIZE, d, ai, bi, ci[i]);
+        auto endCi = std::chrono::high_resolution_clock::now();
+        elapsedCi += endCi - startCi;
+
+        auto startCi_ = std::chrono::high_resolution_clock::now();
+        vector<uint64_t> bi_ = ColVectorXi64_to_vector(Bi_.col(i));
         secure_mult(d, BATCH_SIZE, ai_t, bi_, ci_[i]);
+        auto endCi_ = std::chrono::high_resolution_clock::now();
+        elapsedCi_ += endCi_ - startCi_;
     }
     vector2d_to_ColMatrixXi64(ci, Ci);
     vector2d_to_ColMatrixXi64(ci_, Ci_);
     cout << "Triples Generated" << endl;
+    // std::cout << "Matrix ai generated time measured: " << elapsedai.count() << " seconds." << std::endl;
+    // std::cout << "Matrix ai_t generated time measured: " << elapsedai_t.count() << " seconds." << std::endl;
+    std::cout << "Matrix Ci generated time measured: " << elapsedCi.count() + elapsedai.count() << " seconds." << std::endl;
+    std::cout << "Matrix Ci_ generated time measured: " << elapsedCi_.count() + elapsedai.count() + elapsedai_t.count() << " seconds." << std::endl;
 #if DEBUG
     verify();
 #endif
