@@ -1,0 +1,29 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "matrix_generate gdb",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/bin/matrix_generate",
+            "args": ["1", "8000", "12800", "784", "100", "128"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}/build/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

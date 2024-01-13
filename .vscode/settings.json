@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "dense": "cpp",
+        "cholesky": "cpp"
+    }
+}
