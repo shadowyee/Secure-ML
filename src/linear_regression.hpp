@@ -26,6 +26,8 @@ public:
         this->w.resize(d);
         this->w_d.resize(d);
 
+        auto startOffline = std::chrono::high_resolution_clock::now();
+
         this->setup = new SetupPhase(n, d, t, io);
 
         setup->generateMTs();
@@ -56,12 +58,22 @@ public:
         std::cout << "Offline Phase Communication Cost: " << io->counter << "B" << endl;
         uint64_t scount = io->counter;
 
+        auto endOffline = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> offlineTime = endOffline - startOffline;
+        std::cout << "Offline Phase Runtime Cost: " << offlineTime.count() << endl;
+      
+        auto startOnline = std::chrono::high_resolution_clock::now();
+
         this->online = new OnlinePhase(params, io, &triples);
         online->initialize(Xi, Yi);
 
         train_model();
               
         std::cout << "Online Phase Communication Cost: " << io->counter - scount << "B" << endl;
+
+        auto endOnline = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> onlineTime = endOnline - startOnline;
+        std::cout << "Online Phase Runtime Cost: " << onlineTime.count() << endl;
     }
 
     void train_model();

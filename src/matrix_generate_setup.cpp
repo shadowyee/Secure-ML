@@ -32,6 +32,8 @@ void SetupPhase::generateMTs(int batch_size){
     std::chrono::duration<double> elapsedai_t = {};
     std::chrono::duration<double> elapsedCi = {};
     std::chrono::duration<double> elapsedCi_ = {};
+    uint64_t countCi = 0;
+    uint64_t countCi_ = 0;
     for(int i = 0; i < t; i++){
         auto startai = std::chrono::high_resolution_clock::now();
         RowMatrixXi64 Ai_b = Ai.block(i * batch_size, 0, batch_size, d);
@@ -49,23 +51,28 @@ void SetupPhase::generateMTs(int batch_size){
 
         auto startCi = std::chrono::high_resolution_clock::now();
         vector<uint64_t> bi = ColVectorXi64_to_vector(Bi.col(i));
+        uint64_t sCountCi = io->counter;
         secure_mult(batch_size, d, ai, bi, ci[i]);
+        countCi += io->counter - sCountCi;
         auto endCi = std::chrono::high_resolution_clock::now();
         elapsedCi += endCi - startCi;
 
         auto startCi_ = std::chrono::high_resolution_clock::now();
         vector<uint64_t> bi_ = ColVectorXi64_to_vector(Bi_.col(i));
+        uint64_t sCountCi_ = io->counter;
         secure_mult(d, batch_size, ai_t, bi_, ci_[i]);
+        countCi_ += io->counter - sCountCi_;
         auto endCi_ = std::chrono::high_resolution_clock::now();
         elapsedCi_ += endCi_ - startCi_;
     }
     vector2d_to_ColMatrixXi64(ci, Ci);
     vector2d_to_ColMatrixXi64(ci_, Ci_);
     cout << "Triples Generated" << endl;
-    // std::cout << "Matrix ai generated time measured: " << elapsedai.count() << " seconds." << std::endl;
-    // std::cout << "Matrix ai_t generated time measured: " << elapsedai_t.count() << " seconds." << std::endl;
     std::cout << "Matrix Ci generated time measured: " << elapsedCi.count() + elapsedai.count() << " seconds." << std::endl;
+    std::cout << "Matrix Ci generated comm. cost: " << countCi << "B." << std::endl;
     std::cout << "Matrix Ci_ generated time measured: " << elapsedCi_.count() + elapsedai.count() + elapsedai_t.count() << " seconds." << std::endl;
+    std::cout << "Matrix Ci_ generated comm. cost: " << countCi_ << "B." << std::endl;
+
 #if DEBUG
     // verify(batch_size);
 #endif
