@@ -1,60 +1,158 @@
-Starting test at Fri Jan 12 16:36:03 CST 2024
+Starting test at Wed Jan 17 14:54:39 CST 2024
 ========================
-n=32, d=32, t=32, |B|=32
+n=1000, d=100, t=8, |B|=125
 ========================
 connected
 =================
 Matrix Generating
 =================
-Matrix Ai generated time measured: 8.7e-06 seconds.
-Matrix Bi generated time measured: 8.9e-06 seconds.
-Matrix Bi_ generated time measured: 9.4e-06 seconds.
+Matrix Ai generated time measured: 0.0017913 seconds.
+Matrix Bi generated time measured: 1.93e-05 seconds.
+Matrix Bi_ generated time measured: 1.19e-05 seconds.
 Matrices Initialized
 Triples Generated
-Matrix Ci generated time measured: 0.362384 seconds.
-Matrix Ci_ generated time measured: 0.332696 seconds.
+Matrix Ci generated time measured: 1.69719 seconds.
+Matrix Ci generated comm. cost: 92151109B.
+Matrix Ci_ generated time measured: 1.56191 seconds.
+Matrix Ci_ generated comm. cost: 92097280B.
 Matrix Generate done
 ==========end============
-Starting test at Fri Jan 12 16:36:07 CST 2024
+Starting test at Wed Jan 17 14:54:43 CST 2024
 ========================
-n=64, d=64, t=64, |B|=64
+n=1000, d=500, t=8, |B|=125
 ========================
 connected
 =================
 Matrix Generating
 =================
-Matrix Ai generated time measured: 4e-05 seconds.
-Matrix Bi generated time measured: 3.83e-05 seconds.
-Matrix Bi_ generated time measured: 3.73e-05 seconds.
+Matrix Ai generated time measured: 0.0090299 seconds.
+Matrix Bi generated time measured: 0.0002709 seconds.
+Matrix Bi_ generated time measured: 2.12e-05 seconds.
 Matrices Initialized
 Triples Generated
-Matrix Ci generated time measured: 2.04716 seconds.
-Matrix Ci_ generated time measured: 1.99752 seconds.
+Matrix Ci generated time measured: 14.3611 seconds.
+Matrix Ci generated comm. cost: 456473925B.
+Matrix Ci_ generated time measured: 14.8327 seconds.
+Matrix Ci_ generated comm. cost: 451698944B.
 Matrix Generate done
 ==========end============
-Starting test at Fri Jan 12 16:36:14 CST 2024
+Starting test at Wed Jan 17 14:55:12 CST 2024
 ========================
-n=128, d=128, t=128, |B|=128
+n=1000, d=1000, t=8, |B|=125
 ========================
 connected
 =================
 Matrix Generating
 =================
-Matrix Ai generated time measured: 0.0001437 seconds.
-Matrix Bi generated time measured: 0.0001484 seconds.
+Matrix Ai generated time measured: 0.0184777 seconds.
+Matrix Bi generated time measured: 0.0001522 seconds.
+Matrix Bi_ generated time measured: 1.66e-05 seconds.
+Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 29.4419 seconds.
+Matrix Ci generated comm. cost: 910828869B.
+Matrix Ci_ generated time measured: 36.1845 seconds.
+Matrix Ci_ generated comm. cost: 903109888B.
+Matrix Generate done
+==========end============
+Starting test at Wed Jan 17 14:56:18 CST 2024
+========================
+n=10000, d=100, t=80, |B|=125
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 0.016836 seconds.
+Matrix Bi generated time measured: 0.0001381 seconds.
+Matrix Bi_ generated time measured: 0.0001762 seconds.
+Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 15.6761 seconds.
+Matrix Ci generated comm. cost: 921314629B.
+Matrix Ci_ generated time measured: 15.5604 seconds.
+Matrix Ci_ generated comm. cost: 920972800B.
+Matrix Generate done
+==========end============
+Starting test at Wed Jan 17 14:56:50 CST 2024
+========================
+n=10000, d=500, t=80, |B|=125
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 0.0923082 seconds.
+Matrix Bi generated time measured: 0.0007224 seconds.
 Matrix Bi_ generated time measured: 0.000172 seconds.
 Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 161.934 seconds.
+Matrix Ci generated comm. cost: 4564542789B.
+Matrix Ci_ generated time measured: 162.38 seconds.
+Matrix Ci_ generated comm. cost: 4516989440B.
+Matrix Generate done
 ==========end============
-Starting test at Fri Jan 12 16:36:34 CST 2024
+Starting test at Wed Jan 17 15:02:14 CST 2024
 ========================
-n=256, d=256, t=256, |B|=256
+n=10000, d=1000, t=80, |B|=125
 ========================
 connected
 =================
 Matrix Generating
 =================
-Matrix Ai generated time measured: 0.0008231 seconds.
-Matrix Bi generated time measured: 0.000854 seconds.
-Matrix Bi_ generated time measured: 0.0008627 seconds.
+Matrix Ai generated time measured: 0.220044 seconds.
+Matrix Bi generated time measured: 0.0014697 seconds.
+Matrix Bi_ generated time measured: 0.000175 seconds.
 Matrices Initialized
 ==========end============
+Starting test at Wed Jan 17 15:12:21 CST 2024
+========================
+n=100000, d=100, t=100, |B|=125
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 0.201277 seconds.
+Matrix Bi generated time measured: 0.00023 seconds.
+Matrix Bi_ generated time measured: 0.000308 seconds.
+Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 21.2339 seconds.
+Matrix Ci generated comm. cost: 1151637829B.
+Matrix Ci_ generated time measured: 21.0268 seconds.
+Matrix Ci_ generated comm. cost: 1151216000B.
+Matrix Generate done
+==========end============
+Starting test at Wed Jan 17 15:13:04 CST 2024
+========================
+n=100000, d=500, t=100, |B|=125
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 0.987324 seconds.
+Matrix Bi generated time measured: 0.0008761 seconds.
+Matrix Bi_ generated time measured: 0.000225 seconds.
+Matrices Initialized
+Triples Generated
+Matrix Ci generated time measured: 208.123 seconds.
+Matrix Ci generated comm. cost: 5705673029B.
+Matrix Ci_ generated time measured: 209.04 seconds.
+Matrix Ci_ generated comm. cost: 5646236800B.
+Matrix Generate done
+==========end============
+Starting test at Wed Jan 17 15:20:02 CST 2024
+========================
+n=100000, d=1000, t=100, |B|=125
+========================
+connected
+=================
+Matrix Generating
+=================
+Matrix Ai generated time measured: 2.23981 seconds.
+Matrix Bi generated time measured: 0.0018377 seconds.
+Matrix Bi_ generated time measured: 0.0002278 seconds.
+Matrices Initialized
