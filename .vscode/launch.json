@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/build/bin/matrix_generate",
-            "args": ["1", "8000", "12800", "784", "100", "128"],
+            "args": ["1", "8000", "128", "128", "128", "128"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}/build/bin",
             "environment": [],
